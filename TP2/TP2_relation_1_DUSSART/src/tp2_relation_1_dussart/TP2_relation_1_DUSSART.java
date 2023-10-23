@@ -47,6 +47,7 @@ System.out.println("la premiere voiture de Bob est " + reno.liste_voitures[0]
 + "la deuxieme voiture de reno est " + reno.liste_voitures[1] ) ;
 
 
+bob.ajouter_voiture(une2008);
     }
     
 }
