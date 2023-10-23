@@ -16,10 +16,19 @@ package tp3_heroic_fantasy_dussart;
     public Arme(String Nom, int Attaque) {
         this.Nom = Nom;
         this.Attaque = Attaque;
-
+    }
+    
+    public String getNom() {
+        return Nom;
+    }
+    
+    public int getAttaque() {
+        return Attaque;
+    }
+    
     @Override
     public String toString() {
         return "Arme{" + "Nom=" + Nom + ", Attaque=" + Attaque +"}";
     }
-}
+
 }

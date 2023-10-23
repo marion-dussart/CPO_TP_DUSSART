@@ -10,16 +10,17 @@ package tp3_heroic_fantasy_dussart;
  */
 public class Baton extends Arme{
     String Nom ;
-    double Age ;
+    int Age ;
 
 
-    public Baton(String Nom, double Age){
+    public Baton(String Nom, int attaque, int Age){
+        super(Nom, attaque);
         this.Nom = Nom;
         this.Age = Age;
-
+    }
     @Override
     public String toString() {
         return "Baton{" + "Nom=" + Nom + ", Age=" + Age +"}";
     }
 }
-}
+

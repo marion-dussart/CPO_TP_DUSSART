@@ -10,16 +10,17 @@ package tp3_heroic_fantasy_dussart;
  */
 public class Epee extends Arme {
     String Nom ;
-    double Finesse;
+    int Finesse;
 
 
-    public Epee(String Nom, double Finess){
-        this.Nom = Nom;
+    public Epee (String Nom, int attaque, int Finesse){
+        super(Nom, attaque);
         this.Finesse = Finesse;
-
+    }
+    
     @Override
     public String toString() {
         return "Epee{" + "Nom=" + Nom + ", Finesse=" + Finesse +"}";
     }
 }  
-}
+
