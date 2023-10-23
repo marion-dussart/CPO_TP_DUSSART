@@ -14,7 +14,11 @@ public class TP3_Heroic_Fantasy_DUSSART {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+Arme Epee1 = new Epee ("Excalbur", 7.5 ) ;
+Arme Epee2 = new Epee ("Durandal", 4.5 ) ;
+
+Arme Baton1 = new Baton ("Chene", 4.5 ) ;
+Arme Baton2 = new Baton ("Charme", 5.6 ) ;
     }
     
 }

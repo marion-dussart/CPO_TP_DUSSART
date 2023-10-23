@@ -8,6 +8,18 @@ package tp3_heroic_fantasy_dussart;
  *
  * @author mario
  */
-public class Arme {
-    
+   public abstract class Arme {
+    String Nom ;
+    int Attaque ;
+
+
+    public Arme(String Nom, int Attaque) {
+        this.Nom = Nom;
+        this.Attaque = Attaque;
+
+    @Override
+    public String toString() {
+        return "Arme{" + "Nom=" + Nom + ", Attaque=" + Attaque +"}";
+    }
+}
 }

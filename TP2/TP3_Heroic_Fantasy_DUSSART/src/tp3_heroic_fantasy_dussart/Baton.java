@@ -8,6 +8,18 @@ package tp3_heroic_fantasy_dussart;
  *
  * @author mario
  */
-public class Baton {
-    
+public class Baton extends Arme{
+    String Nom ;
+    double Age ;
+
+
+    public Baton(String Nom, double Age){
+        this.Nom = Nom;
+        this.Age = Age;
+
+    @Override
+    public String toString() {
+        return "Baton{" + "Nom=" + Nom + ", Age=" + Age +"}";
+    }
+}
 }

@@ -8,6 +8,18 @@ package tp3_heroic_fantasy_dussart;
  *
  * @author mario
  */
-public class Epee {
-    
+public class Epee extends Arme {
+    String Nom ;
+    double Finesse;
+
+
+    public Epee(String Nom, double Finess){
+        this.Nom = Nom;
+        this.Finesse = Finesse;
+
+    @Override
+    public String toString() {
+        return "Epee{" + "Nom=" + Nom + ", Finesse=" + Finesse +"}";
+    }
+}  
 }
