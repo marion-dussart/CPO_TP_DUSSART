@@ -25,6 +25,26 @@ public class LightOff_DUSSART_version_console {
         
         cellule2.getEtat();
         System.out.println("Etat de la cellule est: "+ cellule2);
+        
+        int nbLignes = 10;
+        int nbColonnes = 10;
+                
+        GrilleDeJeu grille = new GrilleDeJeu(nbLignes, nbColonnes);
+        System.out.println(grille);
+        grille.activerLigneDeCellules(1); // Active la première ligne
+        System.out.println(grille); // Vérifiez que la ligne est activée
+        grille.activerColonneDeCellules(2); // Active la deuxième colonne
+        System.out.println(grille); // Vérifiez que la colonne est activée
+        grille.activerDiagonaleDescendante(); // Active la diagonale descendante
+        System.out.println(grille); // Vérifiez que la diagonale est activée
+        grille.activerDiagonaleMontante(); // Active la diagonale montante
+        System.out.println(grille); // Vérifiez que la diagonale montante est activée
+        grille.activerLigneColonneOuDiagonaleAleatoire();
+        System.out.println(grille); // Vérifiez que l'une des lignes, colonnes ou diagonales est activée de manière aléatoire
+          
     }
+    
+    
+    
     
 }
