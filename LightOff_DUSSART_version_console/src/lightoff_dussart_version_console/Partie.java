@@ -4,6 +4,8 @@
  */
 package lightoff_dussart_version_console;
 
+import java.util.Scanner;
+
 /**
  *Permet de jouer au jeu en facilitant l'interaction entre le joueur et la grille
  * @author mario
