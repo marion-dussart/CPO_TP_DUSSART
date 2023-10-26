@@ -16,6 +16,8 @@ package Armes;
     public Arme(String Nom, int Attaque) {
         this.Nom = Nom;
         this.Attaque = Attaque;
+
+
     }
     
     public String getNom() {
@@ -30,11 +32,4 @@ package Armes;
     public String toString() {
         return "Arme{" + "Nom=" + Nom + ", Attaque=" + Attaque +"}";
     }
-
-    public static class arme {
-
-        public arme() {
-        }
-    }
-
 }

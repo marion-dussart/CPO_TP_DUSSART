@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Personnages;
-import Armes.Arme.arme;
+import Armes.Arme;
 
 /**
  *

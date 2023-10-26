@@ -4,8 +4,6 @@
  */
 package Armes;
 
-import Armes.Arme;
-
 /**
  *
  * @author mario
@@ -17,6 +15,7 @@ public class Epee extends Arme {
 
     public Epee (String Nom, int attaque, int Finesse){
         super(Nom, attaque);
+        this.Nom = Nom;
         this.Finesse = Finesse;
     }
     

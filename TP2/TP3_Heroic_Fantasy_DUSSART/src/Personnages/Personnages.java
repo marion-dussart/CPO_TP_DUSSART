@@ -4,7 +4,7 @@
  */
 package Personnages;
 import java.util.ArrayList;
-import Armes.Arme.*;
+import Armes.Arme;
 /**
  *
  * @author mario
@@ -12,12 +12,12 @@ import Armes.Arme.*;
 public class Personnages {
    String nom;
     int pdv;
-    arme ajouter;
-    ArrayList<arme> tab2 = new ArrayList<arme>();
-    arme arme_en_main;
+    Arme ajouter;
+    ArrayList<Arme> tab2 = new ArrayList<Arme>();
+    Arme arme_en_main;
     
     
-    public void ajouter_arme (arme armedonnée){
+    public void ajouter_arme (Arme armedonnée){
         ajouter=armedonnée;
         int taille3=tab2.size();
         if (taille3 < 5){
@@ -33,10 +33,7 @@ public class Personnages {
                 System.out.println("L'arme à été trouvé et équipée");
             
         }
-        
-    
-    
-    
+           
     }
     }
     

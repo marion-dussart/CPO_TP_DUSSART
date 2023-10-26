@@ -4,6 +4,8 @@
  */
 package Personnages;
 
+import Armes.Arme;
+
 /**
  *
  * @author mario
