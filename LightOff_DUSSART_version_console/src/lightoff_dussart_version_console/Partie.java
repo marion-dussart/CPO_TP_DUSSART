@@ -16,8 +16,9 @@ public class Partie {
     private int nbCoupsMax;
     
     /**
-     *Génère une nouvelle grille de cellules
-     * et initialise le compteur nbCoups à zéro
+     *Génère une nouvelle grille de cellules avec les dimensions à définir par le joueur
+     *Initailise le compteur de coups à zéro
+     * Demande au joueur de definir le nombre de coups maximum qu'il peut avoir pour la partie
      * @param nbLignes le nombre de ligne dans la grille
      * @param nbColonnes le nombre de colonne dans la grille
      */
@@ -40,8 +41,9 @@ public class Partie {
         } else {
             System.out.println("Veuillez entrer les valeurs au format 'lignes,colonnes'.");
         }
-        
-        
+      
+       System.out.print("Entrez le nombre de coups maximum pour cette partie : ");
+        nbCoupsMax = scanner.nextInt();   
     }
     
     /**

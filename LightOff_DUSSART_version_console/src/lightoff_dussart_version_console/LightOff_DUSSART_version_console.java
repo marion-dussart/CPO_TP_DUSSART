@@ -16,7 +16,6 @@ public class LightOff_DUSSART_version_console {
     public static void main(String[] args) {
         Partie partie1 = new Partie();
         partie1.initialiserPartie(10);
-        partie1.setNbCoupsMax(2);
         partie1.lancerPartie();
     }
     
