@@ -27,7 +27,7 @@ public class Partie {
     
     /**
      *Initialise la partie en virifiant si le grille est bien mélanger aléatoirement
-     * @param nbTours
+     * @param nbTours le nombre de fois que la matrice est mélangé aléatoirement
      */
     public void initialiserPartie(int nbTours) {
         grille.melangerMatriceAleatoirement(nbTours);
@@ -35,7 +35,8 @@ public class Partie {
 
     /**
      *Permet de jouer au jeu
-     *Elle affiche la grille initiale et utilise une boucle pour que le jeu continue 
+     *Elle affiche la grille initiale et utilise une boucle pour que le jeu continue
+     *jusqu'à ce que toutes les lumières soient éteintes
      */
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
