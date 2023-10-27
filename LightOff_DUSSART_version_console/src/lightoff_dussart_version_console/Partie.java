@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class Partie {
     private GrilleDeJeu grille; 
     private int nbCoups; 
+    private int nbCoupsMax;
     
     /**
      *Génère une nouvelle grille de cellules
@@ -20,9 +21,27 @@ public class Partie {
      * @param nbLignes le nombre de ligne dans la grille
      * @param nbColonnes le nombre de colonne dans la grille
      */
-    public Partie(int nbLignes, int nbColonnes) {
-        grille = new GrilleDeJeu(nbLignes, nbColonnes);
-        nbCoups = 0;
+    public Partie() {
+        Scanner scanner = new Scanner(System.in);
+
+        int nbLignes;
+        int nbColonnes;
+        System.out.print("Entrez le nombre de Lignes et de Colonnes (separes par une virgule) : ");
+    
+        String input = scanner.nextLine();
+        String[] parts = input.split(",");
+
+        if (parts.length == 2) {
+            nbLignes = Integer.parseInt(parts[0].trim());
+            nbColonnes = Integer.parseInt(parts[1].trim());
+
+            grille = new GrilleDeJeu(nbLignes, nbColonnes);
+            nbCoups = 0;
+        } else {
+            System.out.println("Veuillez entrer les valeurs au format 'lignes,colonnes'.");
+        }
+        
+        
     }
     
     /**
@@ -34,6 +53,22 @@ public class Partie {
     }
 
     /**
+     *permet de rentrer le nombre de coups maximum de notre choix
+     * @param nbCoupsM le nombre de coups maximum à définir
+     */
+    public void setNbCoupsMax (int nbCoupsM){
+        this.nbCoupsMax=nbCoupsM;
+    }
+      
+    /**
+     *Verifie quand le nombre de coups égale le nombre de coups maximum 
+     * @return la fin de la partie
+     */
+    public boolean FinDuJeu() {
+        return nbCoups >= nbCoupsMax;
+    }
+     
+    /**
      *Permet de jouer au jeu
      *Elle affiche la grille initiale et utilise une boucle pour que le jeu continue
      *jusqu'à ce que toutes les lumières soient éteintes
@@ -41,7 +76,7 @@ public class Partie {
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
 
-        while (!grille.cellulesToutesEteintes()) {
+        while (!grille.cellulesToutesEteintes()|| FinDuJeu()) {
             System.out.println("Etat actuel de la grille :");
             System.out.println(grille.toString());
 
@@ -52,6 +87,8 @@ public class Partie {
                 System.out.println("Entree invalide. Utilisez un format tel que L2 (Ligne), C3 (Colonne) ou D (Diagonale).");
                 return;
             }
+            
+            if (!FinDuJeu()) {
 
             char action = coup.charAt(0);
             int index = Character.getNumericValue(coup.charAt(1));
@@ -76,9 +113,16 @@ public class Partie {
                     System.out.println("Action invalide. Utilisez L pour ligne, C pour colonne ou D pour diagonale.");
             }
             nbCoups++;
+            }
+            else {
+                System.out.println("Le jeu est termine. Vous avez atteint le nombre maximum de coups.");
+                break ;
+            }  
+            
         }
-
-        System.out.println("Toutes les cellules sont éteintes ! Nombre de coups : " + nbCoups);
+        if (grille.cellulesToutesEteintes()) {
+            System.out.println("Toutes les cellules sont eteintes ! Nombre de coups : " + nbCoups);
+        }
     }
 }
     
