@@ -16,7 +16,6 @@ public class GrilleDeJeu {
 
     /**
      * Permet de créer une nouvelle grille de cellules
-     *
      * @param p_nbLignes     Nombre de lignes de la grille.
      * @param p_nbColonnes   Nombre de colonnes de la grille.
      */
@@ -120,18 +119,17 @@ public class GrilleDeJeu {
     
     /**
     * Vérifie si toutes les cellules de la grille sont éteintes.
-    *
     * @return "true" si elles sont toutes éteintes, sinon "false".
     */
     public boolean cellulesToutesEteintes() {
         for (int ligne = 0; ligne < nbLignes; ligne++) {
             for (int colonne = 0; colonne < nbColonnes; colonne++) {
                 if (matriceCellules[ligne][colonne].estEteint()) {
-                    return true;
+                    return false;
                 }
             }
         }
-        return false; 
+        return true; 
     }
 
     /**

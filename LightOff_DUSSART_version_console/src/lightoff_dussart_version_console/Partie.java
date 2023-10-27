@@ -15,18 +15,28 @@ public class Partie {
     private int nbCoups; 
     
     /**
-     *
-     * @param nbLignes
-     * @param nbColonnes
+     *Génère une nouvelle grille de cellules
+     * et initialise le compteur nbCoups à zéro
+     * @param nbLignes le nombre de ligne dans la grille
+     * @param nbColonnes le nombre de colonne dans la grille
      */
     public Partie(int nbLignes, int nbColonnes) {
         grille = new GrilleDeJeu(nbLignes, nbColonnes);
         nbCoups = 0;
     }
+    
+    /**
+     *Initialise la partie en virifiant si le grille est bien mélanger aléatoirement
+     * @param nbTours
+     */
     public void initialiserPartie(int nbTours) {
         grille.melangerMatriceAleatoirement(nbTours);
     }
 
+    /**
+     *Permet de jouer au jeu
+     *Elle affiche la grille initiale et utilise une boucle pour que le jeu continue 
+     */
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
 
