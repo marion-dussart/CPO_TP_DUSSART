@@ -69,7 +69,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 final int j = i;
                  @Override
                 public void actionPerformed(ActionEvent e) {
-                    //    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                   
                 }
 
             };
