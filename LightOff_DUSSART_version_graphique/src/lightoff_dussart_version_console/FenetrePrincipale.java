@@ -43,7 +43,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.revalidate();
 
         PanneauBoutonsHorizontaux.setLayout(new GridLayout(1, nbColonnes)); // Inverser les arguments pour avoir 1 ligne et plusieurs colonnes
-        getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 440, nbColonnes * 40, 1 * 40)); // Ajuster les dimensions pour la grille horizontale
+
+        int PositionEnBas = (nbLignes * 40) + 40;
+        int PositionEnBas2 = 130 + (nbColonnes * 40);
+
+        getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, PositionEnBas, nbColonnes * 40, 1 * 40)); // Ajuster les dimensions pour la grille horizontale
+        this.pack();
+        this.revalidate();
+
+        PanneauBoutonsDMontante.setLayout(new GridLayout(1, 1));
+        getContentPane().add(PanneauBoutonsDMontante, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, PositionEnBas - 5, 40, 40));
+        this.pack();
+        this.revalidate();
+
+        PanneauBoutonsDDescendante.setLayout(new GridLayout(1, 1));
+        getContentPane().add(PanneauBoutonsDDescendante, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2, PositionEnBas - 5, 40, 40));
         this.pack();
         this.revalidate();
 
@@ -55,7 +69,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //    throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                    grille.activerLigneDeCellules(j);
                 }
 
             };
@@ -67,16 +81,45 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             JButton bouton_Colonnes = new JButton();
             ActionListener ecouteurClick = new ActionListener() {
                 final int j = i;
-                 @Override
+
+                @Override
                 public void actionPerformed(ActionEvent e) {
-                   
+                    grille.activerColonneDeCellules(j);
                 }
 
             };
-        
-        bouton_Colonnes.addActionListener(ecouteurClick);
-        PanneauBoutonsHorizontaux.add(bouton_Colonnes);
+
+            bouton_Colonnes.addActionListener(ecouteurClick);
+            PanneauBoutonsHorizontaux.add(bouton_Colonnes);
         }
+
+        // création du panneau de boutons diag montante
+        JButton bouton_diag1 = new JButton();
+        ActionListener ecouteurClick = new ActionListener() {
+            final int j = i;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grille.activerDiagonaleMontante();
+
+            }
+        };
+        bouton_diag1.addActionListener(ecouteurClick);
+        PanneauBoutonsDMontante.add(bouton_diag1);
+
+        // création du panneau de boutons diag DESCENDANTE
+        JButton bouton_diag2 = new JButton();
+        ActionListener ecouteurClick2 = new ActionListener() {
+            final int j = i;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                grille.activerDiagonaleDescendante();
+            }
+        };
+        bouton_diag2.addActionListener(ecouteurClick2);
+        PanneauBoutonsDDescendante.add(bouton_diag2);
+
     }
 
     public void initialiserPartie() {
@@ -96,8 +139,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille = new javax.swing.JPanel();
         PanneauBoutonsVerticaux = new javax.swing.JPanel();
         PanneauBoutonsHorizontaux = new javax.swing.JPanel();
-        btnDiagonaleM = new javax.swing.JButton();
-        btnDiagonaleD = new javax.swing.JButton();
+        PanneauBoutonsDDescendante = new javax.swing.JPanel();
+        PanneauBoutonsDMontante = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 255));
@@ -148,37 +191,41 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, 360, 40));
+        getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 360, 40));
         PanneauBoutonsHorizontaux.getAccessibleContext().setAccessibleName("");
 
-        btnDiagonaleM.setBackground(new java.awt.Color(255, 0, 204));
-        btnDiagonaleM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDiagonaleMActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnDiagonaleM, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 30, 30));
+        PanneauBoutonsDDescendante.setBackground(new java.awt.Color(255, 0, 51));
 
-        btnDiagonaleD.setBackground(new java.awt.Color(255, 0, 204));
-        btnDiagonaleD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDiagonaleDActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnDiagonaleD, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 30, 30));
+        javax.swing.GroupLayout PanneauBoutonsDDescendanteLayout = new javax.swing.GroupLayout(PanneauBoutonsDDescendante);
+        PanneauBoutonsDDescendante.setLayout(PanneauBoutonsDDescendanteLayout);
+        PanneauBoutonsDDescendanteLayout.setHorizontalGroup(
+            PanneauBoutonsDDescendanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        PanneauBoutonsDDescendanteLayout.setVerticalGroup(
+            PanneauBoutonsDDescendanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(PanneauBoutonsDDescendante, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 420, -1, -1));
+
+        PanneauBoutonsDMontante.setBackground(new java.awt.Color(255, 0, 51));
+
+        javax.swing.GroupLayout PanneauBoutonsDMontanteLayout = new javax.swing.GroupLayout(PanneauBoutonsDMontante);
+        PanneauBoutonsDMontante.setLayout(PanneauBoutonsDMontanteLayout);
+        PanneauBoutonsDMontanteLayout.setHorizontalGroup(
+            PanneauBoutonsDMontanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        PanneauBoutonsDMontanteLayout.setVerticalGroup(
+            PanneauBoutonsDMontanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(PanneauBoutonsDMontante, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDiagonaleMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagonaleMActionPerformed
-        this.grille.activerDiagonaleMontante();
-        repaint();
-    }//GEN-LAST:event_btnDiagonaleMActionPerformed
-
-    private void btnDiagonaleDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagonaleDActionPerformed
-        this.grille.activerDiagonaleDescendante();
-        repaint();
-    }//GEN-LAST:event_btnDiagonaleDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,10 +263,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanneauBoutonsDDescendante;
+    private javax.swing.JPanel PanneauBoutonsDMontante;
     private javax.swing.JPanel PanneauBoutonsHorizontaux;
     private javax.swing.JPanel PanneauBoutonsVerticaux;
     private javax.swing.JPanel PanneauGrille;
-    private javax.swing.JButton btnDiagonaleD;
-    private javax.swing.JButton btnDiagonaleM;
     // End of variables declaration//GEN-END:variables
 }
