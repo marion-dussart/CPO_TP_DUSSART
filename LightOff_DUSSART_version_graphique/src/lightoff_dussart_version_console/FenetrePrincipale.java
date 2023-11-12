@@ -12,7 +12,7 @@ import javax.swing.SwingUtilities;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 /**
- *
+ *Creer et défini l'ensemble des paramettre pour jouer au jeu
  * @author mario
  */
 public class FenetrePrincipale extends javax.swing.JFrame {
@@ -24,7 +24,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private int nbLignes;
 
     /**
-     * Creates new form FenetrePrincipale
+     * Creer une nouvelle grille de jeu à partir des paramettre défini lors du
+     * lancement
      */
     public FenetrePrincipale(int nbColonnes, int nbLignes) {
         initComponents();
@@ -36,7 +37,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
         this.initialiserPartie();
-        
+
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 CelluleGraphique bouton_cellule = new CelluleGraphique(grille.matriceCellules[i][j], 36, 36);
@@ -80,11 +81,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e) {
                     grille.activerLigneDeCellules(j);
                     int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
-                if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                    if ((nbrCelluesetteintes - nbLignes * nbColonnes) == 0) {
                         dispose();
-                        FenetreVictoire f = new FenetreVictoire() ;
-                        f.setVisible(true) ;
-                }
+                        FenetreVictoire f = new FenetreVictoire();
+                        f.setVisible(true);
+                    }
                     repaint();
                 }
             };
@@ -102,11 +103,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e) {
                     grille.activerColonneDeCellules(j);
                     int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
-                if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                    if ((nbrCelluesetteintes - nbLignes * nbColonnes) == 0) {
                         dispose();
-                        FenetreVictoire f = new FenetreVictoire() ;
-                        f.setVisible(true) ;
-                }
+                        FenetreVictoire f = new FenetreVictoire();
+                        f.setVisible(true);
+                    }
                     repaint();
                 }
 
@@ -126,10 +127,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleMontante();
                 int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
-                if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
-                        dispose();
-                        FenetreVictoire f = new FenetreVictoire() ;
-                        f.setVisible(true) ;
+                if ((nbrCelluesetteintes - nbLignes * nbColonnes) == 0) {
+                    dispose();
+                    FenetreVictoire f = new FenetreVictoire();
+                    f.setVisible(true);
                 }
                 repaint();
             }
@@ -146,16 +147,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleDescendante();
-                
-                
-                
+
                 int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
-                if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
-                        dispose();
-                        FenetreVictoire f = new FenetreVictoire() ;
-                        f.setVisible(true) ;
+                if ((nbrCelluesetteintes - nbLignes * nbColonnes) == 0) {
+                    dispose();
+                    FenetreVictoire f = new FenetreVictoire();
+                    f.setVisible(true);
                 }
-                 
+
                 repaint();
 
             }

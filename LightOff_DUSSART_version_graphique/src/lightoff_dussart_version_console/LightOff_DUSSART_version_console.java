@@ -5,7 +5,7 @@
 package lightoff_dussart_version_console;
 
 /**
- *
+ *Defini les paramettre pour jouer 
  * @author mario
  */
 public class LightOff_DUSSART_version_console {

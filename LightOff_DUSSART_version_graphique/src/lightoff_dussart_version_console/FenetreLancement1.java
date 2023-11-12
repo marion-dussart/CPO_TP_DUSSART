@@ -9,22 +9,22 @@ import javax.swing.event.ChangeListener;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
- *
+ * Creer et défini l'ensemble des paramettre de configuration du jeu
  * @author mario
  */
 public class FenetreLancement1 extends javax.swing.JFrame {
-int nbLignes = 10;
+
+    int nbLignes = 10;
     int nbColonnes = 10;
+
     /**
-     * Creates new form FenetreLancement1
+     * Creer une nouvelle fenetre de lancement du jeu
      */
     public FenetreLancement1() {
         initComponents();
-        
-        
-    SliderLignes.setMinimum(2); // Valeur minimale
+
+        SliderLignes.setMinimum(2); // Valeur minimale
         SliderLignes.setMaximum(10); // Valeur maximale
 
         // Définition des valeurs minimales et maximales pour SliderColonnes
@@ -52,11 +52,7 @@ int nbLignes = 10;
                 nbColonnes = nouvelleValeur;
             }
         });
-        
-        
-      
-        
-        
+
     }
 
     /**
@@ -165,7 +161,7 @@ int nbLignes = 10;
     }// </editor-fold>//GEN-END:initComponents
 
     private void BoutonLancerPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoutonLancerPActionPerformed
-        
+
         BoutonLancerP.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -176,9 +172,8 @@ int nbLignes = 10;
 
             }
         });
-        
-        
-        
+
+
     }//GEN-LAST:event_BoutonLancerPActionPerformed
 
     /**

@@ -7,20 +7,20 @@ import java.awt.event.ActionListener;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
- *
+ *Fenetre afficher lors de la victoire du jeu 
+ * Permet de recommencer une nouvelle partie
  * @author mario
  */
 public class FenetreVictoire extends javax.swing.JFrame {
 
     /**
-     * Creates new form FenetreVictoire
+     * Creer une nouvelle fenetre victoire
      */
     public FenetreVictoire() {
         initComponents();
-        
-       BoutonRelancerP.addActionListener(new ActionListener() {
+
+        BoutonRelancerP.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Code à exécuter lorsque le bouton "LancerPartie" est cliqué.
@@ -30,9 +30,7 @@ public class FenetreVictoire extends javax.swing.JFrame {
 
             }
         });
-           
-        
-        
+
     }
 
     /**
