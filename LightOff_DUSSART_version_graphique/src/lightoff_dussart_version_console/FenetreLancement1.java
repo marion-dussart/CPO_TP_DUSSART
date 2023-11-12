@@ -2,6 +2,8 @@ package lightoff_dussart_version_console;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,12 +15,48 @@ import java.awt.event.ActionListener;
  * @author mario
  */
 public class FenetreLancement1 extends javax.swing.JFrame {
-
+int nbLignes = 10;
+    int nbColonnes = 10;
     /**
      * Creates new form FenetreLancement1
      */
     public FenetreLancement1() {
         initComponents();
+        
+        
+    SliderLignes.setMinimum(2); // Valeur minimale
+        SliderLignes.setMaximum(10); // Valeur maximale
+
+        // Définition des valeurs minimales et maximales pour SliderColonnes
+        SliderColonnes.setMinimum(2); // Valeur minimale
+        SliderColonnes.setMaximum(10); // Valeur maximale
+
+        // Écouteur de changement pour SliderLignes
+        SliderLignes.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                // Récupérer la nouvelle valeur de SliderLignes
+                int nouvelleValeur = SliderLignes.getValue();
+                // Mettre à jour nbLignes avec la nouvelle valeur
+                nbLignes = nouvelleValeur;
+            }
+        });
+
+        // Écouteur de changement pour SliderColonnes
+        SliderColonnes.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                // Récupérer la nouvelle valeur de SliderColonnes
+                int nouvelleValeur = SliderColonnes.getValue();
+                // Mettre à jour nbColonnes avec la nouvelle valeur
+                nbColonnes = nouvelleValeur;
+            }
+        });
+        
+        
+      
+        
+        
     }
 
     /**
@@ -32,12 +70,12 @@ public class FenetreLancement1 extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         BoutonLancerP = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        SliderLignes = new javax.swing.JSlider();
+        SliderColonnes = new javax.swing.JSlider();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
@@ -54,12 +92,16 @@ public class FenetreLancement1 extends javax.swing.JFrame {
 
         jLabel1.setText("Choisissez le nombe de ligne et le nombre de colonne de votre grille :");
 
-        jLabel2.setText("Nombre de ligne :");
+        jLabel2.setText("Nombre de ligne (entre 2 et 10) :");
 
-        jLabel3.setText("Nombre de colonne :");
+        jLabel3.setText("Nombre de colonne (entre 2 et 10) :");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setText("Bienvenue dans LightOFF");
+
+        SliderLignes.setBackground(new java.awt.Color(255, 255, 255));
+
+        SliderColonnes.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -74,17 +116,15 @@ public class FenetreLancement1 extends javax.swing.JFrame {
                         .addGap(117, 117, 117)
                         .addComponent(jLabel1))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(72, 72, 72)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(113, Short.MAX_VALUE))
+                        .addGap(89, 89, 89)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SliderLignes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SliderColonnes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(79, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -97,17 +137,17 @@ public class FenetreLancement1 extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addGap(23, 23, 23)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SliderLignes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(68, 68, 68)
+                    .addComponent(SliderColonnes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
                 .addComponent(BoutonLancerP)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,7 +170,7 @@ public class FenetreLancement1 extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Code à exécuter lorsque le bouton "LancerPartie" est cliqué.
-                FenetrePrincipale f = new FenetrePrincipale();
+                FenetrePrincipale f = new FenetrePrincipale(nbColonnes, nbLignes);
                 f.setVisible(true);
                 dispose();
 
@@ -178,12 +218,12 @@ public class FenetreLancement1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BoutonLancerP;
+    private javax.swing.JSlider SliderColonnes;
+    private javax.swing.JSlider SliderLignes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     // End of variables declaration//GEN-END:variables
 }
