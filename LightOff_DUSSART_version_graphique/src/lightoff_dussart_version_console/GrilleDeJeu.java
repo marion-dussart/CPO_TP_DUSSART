@@ -117,6 +117,28 @@ public class GrilleDeJeu {
         }
     }
     
+    public int combiendecellulesencoreallumés() {
+        int ntotalcellules = nbLignes*nbColonnes ;
+        int nbrCelluleseteintes = 0;
+
+        for (int ligne = 0; ligne < nbLignes; ligne++) {
+            for (int colonne = 0; colonne < nbColonnes; colonne++) {
+                if (!matriceCellules[ligne][colonne].estEteint()) { 
+                    nbrCelluleseteintes++;
+                }
+            }
+        }
+        
+        int nbrCellulesEncoreAllumés = ntotalcellules - nbrCelluleseteintes ;
+
+        return nbrCellulesEncoreAllumés;
+    }
+    
+    
+    
+    
+    
+    
     /**
     * Vérifie si toutes les cellules de la grille sont éteintes.
     * @return "true" si elles sont toutes éteintes, sinon "false".

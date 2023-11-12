@@ -1,9 +1,11 @@
 package lightoff_dussart_version_console;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -31,11 +33,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.revalidate();
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
+        this.initialiserPartie();
+        
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 CelluleGraphique bouton_cellule = new CelluleGraphique(grille.matriceCellules[i][j], 36, 36);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
+
             }
+
         }
         PanneauBoutonsVerticaux.setLayout(new GridLayout(nbLignes, 1));
         getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 1 * 40, nbLignes * 40));
@@ -60,6 +66,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(PanneauBoutonsDDescendante, new org.netbeans.lib.awtextra.AbsoluteConstraints(PositionEnBas2, PositionEnBas - 5, 40, 40));
         this.pack();
         this.revalidate();
+        repaint();
 
         // création du panneau de boutons verticaux (pour les lignes)
         for (i = 0; i < nbLignes; i++) {
@@ -70,11 +77,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     grille.activerLigneDeCellules(j);
+                    int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                        dispose();
+                        FenetreVictoire f = new FenetreVictoire() ;
+                        f.setVisible(true) ;
                 }
-
+                    repaint();
+                }
             };
             bouton_ligne.addActionListener(ecouteurClick);
             PanneauBoutonsVerticaux.add(bouton_ligne);
+            repaint();
         }
 
         for (i = 0; i < nbColonnes; i++) {
@@ -85,12 +99,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     grille.activerColonneDeCellules(j);
+                    int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                        dispose();
+                        FenetreVictoire f = new FenetreVictoire() ;
+                        f.setVisible(true) ;
+                }
+                    repaint();
                 }
 
             };
 
             bouton_Colonnes.addActionListener(ecouteurClick);
             PanneauBoutonsHorizontaux.add(bouton_Colonnes);
+            repaint();
         }
 
         // création du panneau de boutons diag montante
@@ -101,11 +123,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleMontante();
-
+                int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                        dispose();
+                        FenetreVictoire f = new FenetreVictoire() ;
+                        f.setVisible(true) ;
+                }
+                repaint();
             }
         };
         bouton_diag1.addActionListener(ecouteurClick);
         PanneauBoutonsDMontante.add(bouton_diag1);
+        repaint();
 
         // création du panneau de boutons diag DESCENDANTE
         JButton bouton_diag2 = new JButton();
@@ -115,16 +144,30 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 grille.activerDiagonaleDescendante();
+                
+                
+                
+                int nbrCelluesetteintes = grille.combiendecellulesencoreallumés();
+                if ((nbrCelluesetteintes - nbLignes * nbColonnes ) == 0 ) {
+                        dispose();
+                        FenetreVictoire f = new FenetreVictoire() ;
+                        f.setVisible(true) ;
+                }
+                 
+                repaint();
+
             }
         };
         bouton_diag2.addActionListener(ecouteurClick2);
         PanneauBoutonsDDescendante.add(bouton_diag2);
+        repaint();
 
     }
 
     public void initialiserPartie() {
         grille.eteindreToutesLesCellules();
         grille.melangerMatriceAleatoirement(10);
+        repaint();
     }
 
     /**
